@@ -203,7 +203,7 @@ function builder(initial){
   const P=document.getElementById("panel"),pv=document.getElementById("pv");
   const chips=(k,opts)=>`<div class="chips">${Object.entries(opts).map(([v,l])=>`<button class="chip" data-k="${k}" data-v="${v}" aria-pressed="false">${esc(Array.isArray(l)?l[0]:l)}</button>`).join("")}</div>`;
   const rng=(k,l,a,b)=>`<label class="row"><span>${l}<em class="val" data-o="${k}"></em></span><input type="range" data-r="${k}" min="${a}" max="${b}"></label>`;
-  P.innerHTML=`<h1>Nook</h1><p class="sub">Design your browser homepage, preview it live, and get a link to paste into Brave. No account, no hosting steps.</p>
+  P.innerHTML=`<h1>Nook</h1><p class="sub">Design your browser homepage, preview it live, and get a link to paste into Web browser. No account, no hosting steps.</p>
   <div class="sec"><h2>Theme</h2><div class="chips">${Object.entries(THEMES).map(([k,t])=>`<button class="sw" data-k="t" data-v="${k}" aria-pressed="false" aria-label="${t.n}" title="${t.n}" style="background:${t.bg}"></button>`).join("")}</div></div>
   <div class="sec"><h2>Wallpaper</h2><div class="chips" id="wpm">${[["theme","Theme"],["url","Image link"],["up","Upload"]].map(([v,l])=>`<button class="chip" data-wp="${v}" aria-pressed="false">${l}</button>`).join("")}</div>
   <div id="wpx"></div>${rng("dim","Darken",0,70)}${rng("blur","Blur",0,20)}</div>
