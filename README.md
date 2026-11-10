@@ -4,7 +4,7 @@ Design your own browser homepage, preview it live, and get a link to paste into 
 
 ## How it works
 
-Nook is one static page (`index.html`).
+Nook is one static page (`homepagei.html`).
 
 - **Builder:** open the site normally. Pick a theme, wallpaper, font, widget style, widgets and quick links while a live preview updates.
 - **Homepage:** "Create my link" packs your choices into the link (`…/#c=…`). Opening that link shows your homepage.
@@ -22,11 +22,11 @@ Your settings live inside the link, so nothing is stored on a server.
 
 ## Put it online (free, about 2 minutes)
 
-1. Create a GitHub repo and upload `index.html` and this README.
+1. Create a GitHub repo and upload `homepagei.html` and this README.
 2. Repo **Settings → Pages → Deploy from a branch → `main` / root → Save**.
 3. Your site appears at `https://<your-username>.github.io/<repo>/`.
 
-## Use it as your homepage in Brave (Android)
+## Use it as your homepage in Web browser (Android)
 
 1. Open your Nook site, design your page, tap **Create my link**, then **Copy link**.
 2. Brave → **Settings → Homepage** → turn on, choose a custom address, paste.
@@ -46,7 +46,7 @@ Your settings live inside the link, so nothing is stored on a server.
 The CSP only allows the exact `<script>` block it was generated for. **If you change the script, update the hash in the CSP tag or the page will stay blank.** Print the new hash with:
 
 ```
-node -e "const s=require('fs').readFileSync('index.html','utf8').match(/<script>([\\s\\S]*)<\\/script>/)[1];console.log('sha256-'+require('crypto').createHash('sha256').update(s).digest('base64'))"
+node -e "const s=require('fs').readFileSync('homepagei.html','utf8').match(/<script>([\\s\\S]*)<\\/script>/)[1];console.log('sha256-'+require('crypto').createHash('sha256').update(s).digest('base64'))"
 ```
 
 ## Ideas for contributors
