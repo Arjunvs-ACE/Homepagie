@@ -1,4 +1,4 @@
-# homepagei
+# homepagie 
 
 Design your own browser homepage, preview it live, and get a link to paste into your browser. No account, no server, no hosting steps. It uses standard web features and is tested in Chromium-based browsers (Chrome, Brave, Edge). It should also work in Firefox, Samsung Internet and other modern browsers on Android and desktop, but those are not tested yet.
 
