@@ -106,4 +106,4 @@ MIT. See `LICENSE`.
 
 ## Ideas for contributors
 
-News widget (needs a small proxy), “fit whole image” wallpaper option, link folders, custom text widget, QR code for sharing, drag-and-drop layout, installable web app (PWA), more themes and widgets, testing in Firefox and Safari.
+News widget (needs a small proxy), “fit whole image” wallpaper option, link folders, custom text widget, QR code for sharing, drag-and-drop layout, installable web app (PWA), more themes and widgets.
