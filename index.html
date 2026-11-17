@@ -8,11 +8,11 @@
 <meta property="og:title" content="homepagei – make your own browser homepage">
 <meta property="og:description" content="Pick a theme, wallpaper and widgets, then paste one link into your browser.">
 <meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-HaGndyifWOaS9P0uJp2a0JhDOIKKP4tk4uwYqFnJg7w='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src https: blob: data:; connect-src 'none'; form-action 'none'; base-uri 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-JvXAzX59FfcXtAf2nM2NWTRiNauos9zs+vs06xmqcyY='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src https: blob: data:; connect-src 'none'; form-action 'none'; base-uri 'none'">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🏠%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@500;700&family=JetBrains+Mono:wght@400;600&family=Pacifico&family=Outfit:wght@300;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@500;700&family=JetBrains+Mono:wght@400;600&family=Pacifico&family=Outfit:wght@300;500&family=Space+Grotesk:wght@400;600&family=Caveat:wght@500&family=Poppins:wght@400;600&display=swap">
 <style>
 *{box-sizing:border-box;margin:0}
 html,body,#app{height:100%}
@@ -21,9 +21,9 @@ button,input,textarea,select{font:inherit;color:inherit}
 :focus-visible{outline:2px solid #9b8cff;outline-offset:2px}
 
 /* ---------- Homepage (viewer + preview) ---------- */
-.hp{position:relative;width:100%;height:100%;min-height:100%;overflow:auto;color:var(--fg);font-family:var(--font);display:flex}
+.hp{position:relative;width:100%;height:100%;min-height:100%;overflow:hidden;color:var(--fg);font-family:var(--font);display:flex}
 .hp .wp,.hp .dim{position:absolute;inset:0;background-size:cover;background-position:center}
-.hp .wp{background:var(--bg);filter:blur(var(--blur));transform:scale(1.05)}
+.hp .wp{background:var(--bg) center/cover no-repeat;filter:blur(var(--blur));inset:-30px}
 .hp .dim{background:#000;opacity:var(--dim)}
 .hp main{position:relative;width:100%;max-width:640px;margin:auto;padding:clamp(20px,6vh,56px) 20px;display:flex;flex-direction:column;gap:18px;align-items:var(--al);text-align:var(--ta)}
 .hp .w{background:var(--card);border:1px solid transparent;border-radius:var(--r);padding:14px 16px;width:100%}
@@ -51,6 +51,24 @@ button,input,textarea,select{font:inherit;color:inherit}
 .hp.sh .sx button,.hp.sh .tile i{text-shadow:none}
 .hp .banner{position:absolute;left:12px;right:12px;top:12px;z-index:3;background:#fff;color:#111;font:14px/1.4 Inter,system-ui,sans-serif;border-radius:14px;padding:12px 14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;box-shadow:0 8px 30px rgba(0,0,0,.35)}
 .hp .banner button{border:0;border-radius:10px;padding:8px 14px;font-weight:600;cursor:pointer;background:#111;color:#fff}
+.hp .ti{width:100%;background:transparent;border:0;border-top:1px solid rgba(128,128,128,.35);outline:0;padding:8px 2px 0;margin-top:8px;font-size:15px}
+.hp .ti::placeholder{color:inherit;opacity:.5}
+.hp .ti-r{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:3px 0;text-align:left}
+.hp .ti-r label{display:flex;gap:8px;align-items:center;flex:1;min-width:0}
+.hp .ti-r button,.hp .cal button{background:none;border:0;color:inherit;cursor:pointer;font-size:18px;opacity:.7}
+.hp .dn{text-decoration:line-through;opacity:.55}
+.hp .tt{font-size:40px;font-weight:600;font-variant-numeric:tabular-nums}
+.hp .tb{display:flex;gap:8px;justify-content:center;margin-top:8px}
+.hp .tb input{width:64px;background:transparent;border:1px solid currentColor;border-radius:8px;padding:6px;text-align:center;color:inherit}
+.hp .tb button{background:var(--ac);color:var(--acfg);border:0;border-radius:10px;padding:8px 14px;font-weight:600;cursor:pointer}
+.hp .cal .lbl{display:flex;justify-content:space-between;align-items:center}
+.hp .cg{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;font-size:13px;text-align:center}
+.hp .cg span{padding:4px 0;border-radius:8px}
+.hp .cg .td{background:var(--ac);color:var(--acfg);font-weight:600}
+.hp .tile i img{border-radius:6px}
+.hp .sc{position:relative;width:100%;height:100%;overflow:auto;display:flex;padding:env(safe-area-inset-top,0px) env(safe-area-inset-right,0px) env(safe-area-inset-bottom,0px) env(safe-area-inset-left,0px)}
+.hp .sx input:focus-visible,.hp textarea:focus-visible,.hp .ti:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+.hp main{padding-bottom:72px}
 .hp .edit{position:absolute;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:2;color:inherit;opacity:.4;font-size:12px;text-decoration:none;padding:6px 10px;border-radius:99px;background:rgba(0,0,0,.2)}
 .hp .edit:hover{opacity:1}
 
@@ -69,6 +87,9 @@ button,input,textarea,select{font:inherit;color:inherit}
 .row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:8px 0;font-size:14px}
 .row input[type=range]{flex:1;max-width:190px;accent-color:#9b8cff}
 .row input[type=checkbox]{width:20px;height:20px;accent-color:#9b8cff}
+.row input[type=color]{width:44px;height:32px;border:0;background:none;padding:0}
+.mv{display:flex;gap:6px;align-items:center}
+.mvb{border:1px solid #34314a;background:#211f2e;border-radius:8px;width:30px;height:28px;cursor:pointer;font-size:11px}
 .field,.ta{width:100%;background:#211f2e;border:1px solid #34314a;border-radius:10px;padding:10px 12px;margin-top:8px}
 .ta{min-height:110px;resize:vertical;line-height:1.5}
 .hint{font-size:12.5px;color:#9c98b3;margin-top:6px;line-height:1.4}
@@ -105,32 +126,45 @@ const THEMES={
   ink:{n:"Ink",bg:"#080808",fg:"#f5f5f5",card:"rgba(255,255,255,.07)",solid:"#171717",ac:"#f5f5f5",acfg:"#080808"},
   midnight:{n:"Midnight",bg:"radial-gradient(at 20% 10%,#1e3a8a,#0b1020 62%)",fg:"#e8ecff",card:"rgba(255,255,255,.08)",solid:"#141b36",ac:"#6ea8ff",acfg:"#0b1020"},
   sunset:{n:"Sunset",bg:"linear-gradient(135deg,#ff9a56,#ff5e7e 55%,#7b2ff7)",fg:"#fff",card:"rgba(255,255,255,.2)",solid:"#7b2ff7",ac:"#fff",acfg:"#7b2ff7"},
-  forest:{n:"Forest",bg:"linear-gradient(160deg,#134e4a,#1a2e1f)",fg:"#e9f5ec",card:"rgba(255,255,255,.08)",solid:"#16322a",ac:"#6ee7a0",acfg:"#0f2a1c"}
+  forest:{n:"Forest",bg:"linear-gradient(160deg,#134e4a,#1a2e1f)",fg:"#e9f5ec",card:"rgba(255,255,255,.08)",solid:"#16322a",ac:"#6ee7a0",acfg:"#0f2a1c"},
+  ocean:{n:"Ocean",bg:"linear-gradient(160deg,#0ea5e9,#1e3a8a)",fg:"#fff",card:"rgba(255,255,255,.18)",solid:"#12408a",ac:"#fff",acfg:"#12408a"},
+  sakura:{n:"Sakura",bg:"linear-gradient(135deg,#ffe1ec,#ffc2d6 60%,#e9b5ff)",fg:"#4a2140",card:"rgba(255,255,255,.45)",solid:"#fff5f9",ac:"#d6336c",acfg:"#fff"},
+  mocha:{n:"Mocha",bg:"linear-gradient(160deg,#3b2a20,#1c1410)",fg:"#f3e6d8",card:"rgba(255,235,210,.09)",solid:"#2a1e17",ac:"#e0a96d",acfg:"#1c1410"},
+  neon:{n:"Neon",bg:"linear-gradient(135deg,#0b0b1a,#1b0a3a)",fg:"#e8e8ff",card:"rgba(0,255,200,.07)",solid:"#12102a",ac:"#00f5c8",acfg:"#0b0b1a"},
+  auto:{n:"Auto light/dark",bg:"linear-gradient(90deg,#f3f3ef 50%,#080808 50%)"},
+  custom:{n:"Custom colors",bg:"conic-gradient(#f43f5e,#f59e0b,#84cc16,#06b6d4,#6366f1,#f43f5e)"}
 };
-const FONTS={sans:["Clean","Inter,system-ui,sans-serif"],serif:["Elegant","'Playfair Display',Georgia,serif"],mono:["Code","'JetBrains Mono',ui-monospace,monospace"],soft:["Soft","Outfit,system-ui,sans-serif"],script:["Playful","Pacifico,cursive"]};
+const PRESETS=["radial-gradient(at 20% 20%,#ff9a9e,transparent 50%),radial-gradient(at 80% 30%,#a18cd1,transparent 50%),linear-gradient(#fad0c4,#fbc2eb)","radial-gradient(at 30% 20%,#4facfe,transparent 55%),radial-gradient(at 80% 80%,#00f2fe,transparent 50%),#0f2027","linear-gradient(160deg,#0f0c29,#302b63 55%,#24243e)","radial-gradient(at 70% 10%,#f7971e,transparent 50%),radial-gradient(at 10% 80%,#ffd200,transparent 45%),#c33764","linear-gradient(135deg,#232526,#414345)","radial-gradient(at 20% 80%,#43e97b,transparent 50%),radial-gradient(at 80% 20%,#38f9d7,transparent 50%),#134e4a","repeating-linear-gradient(45deg,#1f1c2c 0 14px,#262338 14px 28px)","linear-gradient(120deg,#fdfbfb,#ebedee)"];
+function theme(c){let k=c.t;if(k==="auto")k=matchMedia("(prefers-color-scheme: light)").matches?"paper":"ink";
+  if(k==="custom"){const q=c.cc;return{bg:`linear-gradient(135deg,${q.a},${q.b})`,fg:q.fg,card:"rgba(128,128,128,.22)",solid:q.a,ac:q.ac,acfg:q.a}}return THEMES[k]}
+const FONTS={sans:["Clean","Inter,system-ui,sans-serif"],serif:["Elegant","'Playfair Display',Georgia,serif"],mono:["Code","'JetBrains Mono',ui-monospace,monospace"],soft:["Soft","Outfit,system-ui,sans-serif"],script:["Playful","Pacifico,cursive"],grotesk:["Modern","'Space Grotesk',system-ui,sans-serif"],hand:["Handwritten","Caveat,cursive"],round:["Rounded","Poppins,system-ui,sans-serif"]};
 const CARDS={glass:"Glass",solid:"Solid",outline:"Outline",flat:"Minimal"};
 const ENGINES={brave:["Brave","https://search.brave.com/search?q="],google:["Google","https://www.google.com/search?q="],ddg:["DuckDuckGo","https://duckduckgo.com/?q="],bing:["Bing","https://www.bing.com/search?q="]};
-const WIDGETS={greeting:"Greeting",clock:"Clock & date",search:"Search bar",links:"Quick links",notes:"Notes",quote:"Daily quote"};
+const WIDGETS={clock:"Clock & date",greeting:"Greeting",search:"Search bar",links:"Quick links",todo:"To-do list",timer:"Timer",cal:"Calendar",notes:"Notes",quote:"Daily quote"};
 const QUOTES=["Small steps, every day.","Make it work, then make it beautiful.","Done is better than perfect.","Focus on the next right thing.","You don’t have to see the whole staircase.","Curiosity is a superpower.","Slow is smooth, smooth is fast."];
 const DEF={t:"aesthetic",f:"sans",cs:"glass",r:18,dim:0,blur:0,al:"center",h24:0,name:"",eng:"brave",
-  w:{greeting:1,clock:1,search:1,links:1,notes:0,quote:0},
-  wp:{m:"theme",u:""},
+  w:{greeting:1,clock:1,search:1,links:1,todo:0,timer:0,cal:0,notes:0,quote:0},
+  wp:{m:"theme",u:"",p:0},cc:{a:"#1e1b4b",b:"#7c3aed",fg:"#ffffff",ac:"#fbbf24"},ic:0,order:["clock","greeting","search","links","todo","timer","cal","notes","quote"],
   links:"GitHub | github.com\nYouTube | youtube.com\nGmail | mail.google.com\nChatGPT | chatgpt.com\nReddit | reddit.com\nMaps | maps.google.com"};
 
 /* ========= Safety helpers ========= */
+const has=(o,k)=>Object.prototype.hasOwnProperty.call(o,k);
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const clamp=(n,a,b,d)=>{n=Number(n);return isFinite(n)?Math.min(b,Math.max(a,n)):d};
 function safeUrl(u){u=String(u||"").trim();if(!u)return"";try{const x=new URL(/^[a-z][a-z0-9+.-]*:/i.test(u)?u:"https://"+u);return/^https?:$/.test(x.protocol)?x.href:""}catch{return""}}
 function clean(raw){ // validate any config coming from a URL or storage
   const c=JSON.parse(JSON.stringify(DEF));if(!raw||typeof raw!=="object")return c;
-  if(raw.t in THEMES)c.t=raw.t;if(raw.f in FONTS)c.f=raw.f;if(raw.cs in CARDS)c.cs=raw.cs;if(raw.eng in ENGINES)c.eng=raw.eng;
+  if(has(THEMES,raw.t))c.t=raw.t;if(has(FONTS,raw.f))c.f=raw.f;if(has(CARDS,raw.cs))c.cs=raw.cs;if(has(ENGINES,raw.eng))c.eng=raw.eng;
   c.r=clamp(raw.r,0,32,c.r);c.dim=clamp(raw.dim,0,70,0);c.blur=clamp(raw.blur,0,20,0);
-  c.al=raw.al==="left"?"left":"center";c.h24=raw.h24?1:0;c.name=String(raw.name||"").slice(0,30);
-  if(raw.w&&typeof raw.w==="object")for(const k in WIDGETS)if(k in raw.w)c.w[k]=raw.w[k]?1:0;
-  if(raw.wp&&typeof raw.wp==="object"){c.wp.m=["theme","url","up"].includes(raw.wp.m)?raw.wp.m:"theme";c.wp.u=safeUrl(raw.wp.u)}
+  c.al=raw.al==="left"?"left":"center";c.h24=raw.h24?1:0;c.name=String(raw.name||"").slice(0,30);c.ic=raw.ic?1:0;
+  if(raw.cc&&typeof raw.cc==="object")for(const k of["a","b","fg","ac"])if(/^#[0-9a-f]{6}$/i.test(raw.cc[k]))c.cc[k]=raw.cc[k];
+  if(Array.isArray(raw.order)){const o=raw.order.filter((k,i,a)=>has(WIDGETS,k)&&a.indexOf(k)===i);c.order=o.concat(Object.keys(WIDGETS).filter(k=>!o.includes(k)))}
+  if(raw.w&&typeof raw.w==="object")for(const k in WIDGETS)if(has(raw.w,k))c.w[k]=raw.w[k]?1:0;
+  if(raw.wp&&typeof raw.wp==="object"){c.wp.m=["theme","url","up","preset"].includes(raw.wp.m)?raw.wp.m:"theme";c.wp.u=httpsOnly(raw.wp.u);c.wp.p=clamp(raw.wp.p,0,PRESETS.length-1,0)|0}
   if(typeof raw.links==="string")c.links=raw.links.slice(0,2000);
   return c;
 }
+const httpsOnly=v=>{const u=safeUrl(v);return/^https:/i.test(u)?u:""};
 const slim=c=>{const o={};for(const k in c)if(JSON.stringify(c[k])!==JSON.stringify(DEF[k]))o[k]=c[k];return o};
 const enc=c=>{let s="";new TextEncoder().encode(JSON.stringify(slim(c))).forEach(x=>s+=String.fromCharCode(x));return btoa(s).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"")};
 const dec=s=>{try{const b=atob(s.replace(/-/g,"+").replace(/_/g,"/"));return clean(JSON.parse(new TextDecoder().decode(Uint8Array.from(b,ch=>ch.charCodeAt(0)))))}catch{return null}};
@@ -154,10 +188,10 @@ async function shrink(file){const bmp=await createImageBitmap(file);const s=Math
 /* ========= Homepage renderer ========= */
 let tick=null;
 function applyStyle(c,root){
-  const th=THEMES[c.t];
+  const th=theme(c);
   root.className="hp "+c.cs+(c.wp.m!=="theme"||c.t==="sunset"?" sh":"");
   const st=root.style;
-  st.setProperty("--bg",th.bg);st.setProperty("--fg",th.fg);st.setProperty("--card",th.card);st.setProperty("--solid",th.solid);
+  st.setProperty("--bg",c.wp.m==="preset"?PRESETS[c.wp.p]:th.bg);st.setProperty("--fg",th.fg);st.setProperty("--card",th.card);st.setProperty("--solid",th.solid);
   st.setProperty("--ac",th.ac);st.setProperty("--acfg",th.acfg);st.setProperty("--font",FONTS[c.f][1]);
   st.setProperty("--r",c.r+"px");st.setProperty("--dim",c.dim/100);st.setProperty("--blur",c.blur+"px");
   st.setProperty("--al",c.al==="left"?"flex-start":"center");st.setProperty("--ta",c.al);
@@ -166,14 +200,18 @@ function render(c,root,opts={}){
   applyStyle(c,root);
   const links=parseLinks(c.links).ok;
   const eng=ENGINES[c.eng];
-  let h="";
-  if(c.w.clock)h+=`<div class="clock" data-clock></div><div class="date" data-date style="margin-top:-8px"></div>`;
-  if(c.w.greeting)h+=`<div class="hello" data-hello></div>`;
-  if(c.w.search)h+=`<form class="w sx" data-search><input type="search" placeholder="Search with ${esc(eng[0])}" aria-label="Search" autocomplete="off"><button>Search</button></form>`;
-  if(c.w.links&&links.length)h+=`<nav class="tiles">${links.map(l=>`<a class="w tile" href="${esc(l.u)}" rel="noopener noreferrer" title="${esc(new URL(l.u).hostname)}"><i>${esc([...l.n][0]||"•").toUpperCase()}</i><span>${esc(l.n)}</span>${opts.hold?`<small>${esc(new URL(l.u).hostname.replace(/^www\./,""))}</small>`:""}</a>`).join("")}</nav>`;
-  if(c.w.notes)h+=`<div class="w"><div class="lbl">Notes · saved on this device, not encrypted</div><textarea data-notes placeholder="Jot something down…" aria-label="Notes"></textarea></div>`;
-  if(c.w.quote)h+=`<div class="w quote">“${esc(QUOTES[Math.floor(Date.now()/864e5)%QUOTES.length])}”</div>`;
-  root.innerHTML=`<div class="wp"></div><div class="dim"></div><main>${h}</main>`+(opts.editLink?`<a class="edit" href="?edit#c=${enc(c)}">Edit this page</a>`:"");
+  const W={};let h="";
+  if(c.w.clock)W.clock=`<div class="clock" data-clock></div><div class="date" data-date style="margin-top:-8px"></div>`;
+  if(c.w.greeting)W.greeting=`<div class="hello" data-hello></div>`;
+  if(c.w.search)W.search=`<form class="w sx" data-search><input type="search" placeholder="Search with ${esc(eng[0])}" aria-label="Search" autocomplete="off"><button>Search</button></form>`;
+  if(c.w.links&&links.length)W.links=`<nav class="tiles">${links.map(l=>`<a class="w tile" href="${esc(l.u)}" rel="noopener noreferrer" title="${esc(new URL(l.u).hostname)}"><i>${esc([...l.n][0]||"•").toUpperCase()}</i><span>${esc(l.n)}</span>${opts.hold?`<small>${esc(new URL(l.u).hostname.replace(/^www\./,""))}</small>`:""}</a>`).join("")}</nav>`;
+  if(c.w.notes)W.notes=`<div class="w"><div class="lbl">Notes · saved on this device, not encrypted</div><textarea data-notes placeholder="Jot something down…" aria-label="Notes"></textarea></div>`;
+  if(c.w.quote)W.quote=`<div class="w quote">“${esc(QUOTES[Math.floor(Date.now()/864e5)%QUOTES.length])}”</div>`;
+  if(c.w.todo)W.todo=`<div class="w"><div class="lbl">To-do</div><div data-todo></div><input class="ti" data-tin placeholder="Add a task…" aria-label="Add a task"></div>`;
+  if(c.w.timer)W.timer=`<div class="w"><div class="lbl">Timer</div><div class="tt" data-tt>05:00</div><div class="tb"><input type="number" min="1" max="999" value="5" data-tmin aria-label="Minutes"><button data-tgo>Start</button><button data-trs>Reset</button></div></div>`;
+  if(c.w.cal)W.cal=`<div class="w cal"><div class="lbl"><button data-cp aria-label="Previous month">‹</button><span data-ct></span><button data-cn aria-label="Next month">›</button></div><div class="cg" data-cg></div></div>`;
+  h=c.order.map(k=>W[k]||"").join("");
+  root.innerHTML=`<div class="wp"></div><div class="dim"></div><div class="sc"><main>${h}</main></div>`+(opts.editLink?`<a class="edit" href="?edit#c=${enc(c)}">Edit this page</a>`:"");
   // wallpaper
   const wp=root.querySelector(".wp"),setBg=u=>{if(u)wp.style.backgroundImage=`url("${u.replace(/"/g,"%22")}")`};
   if(c.wp.m==="url"&&!opts.hold)setBg(c.wp.u);
@@ -183,6 +221,24 @@ function render(c,root,opts={}){
   const f=q("[data-search]");if(f)f.onsubmit=e=>{e.preventDefault();const v=f.querySelector("input").value.trim();if(!v)return;
     const u=safeUrl(/^https?:\/\/\S+$/i.test(v)||TLD.test(v)?v:"");location.href=u||eng[1]+encodeURIComponent(v)};
   const n=q("[data-notes]");if(n){n.value=store.get("nook_notes")||"";n.oninput=()=>store.set("nook_notes",n.value)}
+  clearInterval(window.__iv);
+  const td=q("[data-todo]");if(td){let L=[];try{L=JSON.parse(store.get("nook_todo")||"[]")}catch{}
+    L=Array.isArray(L)?L.filter(t=>t&&typeof t.t==="string"):[];
+    const sv=()=>store.set("nook_todo",JSON.stringify(L.slice(0,50)));
+    const dr=()=>{td.innerHTML=L.map((t,i)=>`<div class="ti-r"><label><input type="checkbox" data-i="${i}" ${t.d?"checked":""}><span class="${t.d?"dn":""}">${esc(t.t)}</span></label><button data-x="${i}" aria-label="Delete task">×</button></div>`).join("")};
+    td.onclick=e=>{const d=e.target.dataset;if(d.x!=null)L.splice(+d.x,1);else if(d.i!=null)L[+d.i].d=L[+d.i].d?0:1;else return;sv();dr()};
+    const ip=q("[data-tin]");ip.onkeydown=e=>{if(e.key==="Enter"&&ip.value.trim()&&L.length<50){L.push({t:ip.value.trim().slice(0,80),d:0});ip.value="";sv();dr()}};dr()}
+  const tt=q("[data-tt]");if(tt){let left=0,iv=null;const mn=q("[data-tmin]"),go=q("[data-tgo]");
+    const sh=()=>tt.textContent=String(Math.floor(left/60)).padStart(2,"0")+":"+String(left%60).padStart(2,"0");
+    const set=()=>{left=Math.max(1,Math.min(999,+mn.value||5))*60;sh()};set();mn.oninput=()=>{if(!iv)set()};
+    const stop=()=>{clearInterval(iv);iv=null;go.textContent="Start"};
+    go.onclick=()=>{if(iv){stop();return}if(left<=0)set();go.textContent="Pause";const end=Date.now()+left*1000;iv=window.__iv=setInterval(()=>{left=Math.max(0,Math.round((end-Date.now())/1000));sh();if(left<=0){stop();tt.textContent="Time’s up";try{navigator.vibrate&&navigator.vibrate([300,150,300])}catch{}}},1000)};
+    q("[data-trs]").onclick=()=>{stop();set()}}
+  const cg=q("[data-cg]");if(cg){let off=0;const dc=()=>{const d=new Date(),m=new Date(d.getFullYear(),d.getMonth()+off,1),n=new Date(m.getFullYear(),m.getMonth()+1,0).getDate();
+    q("[data-ct]").textContent=m.toLocaleDateString([],{month:"long",year:"numeric"});
+    cg.innerHTML=["S","M","T","W","T","F","S"].map(x=>`<b>${x}</b>`).join("")+"<span></span>".repeat(m.getDay())+Array.from({length:n},(_,i)=>`<span class="${!off&&i+1===d.getDate()?"td":""}">${i+1}</span>`).join("")};
+    q("[data-cp]").onclick=()=>{off--;dc()};q("[data-cn]").onclick=()=>{off++;dc()};dc()}
+  if(c.ic&&!opts.hold)root.querySelectorAll(".tile").forEach(a=>{const i=a.querySelector("i"),im=new Image();im.onload=()=>{i.textContent="";i.style.background="#fff";im.alt="";im.width=im.height=28;i.append(im)};im.src="https://icons.duckduckgo.com/ip3/"+new URL(a.href).hostname+".ico"});
   clearTimeout(tick);
   const upd=()=>{const d=new Date(),hr=d.getHours();
     const ck=q("[data-clock]");if(ck)ck.textContent=d.toLocaleTimeString([],{hour:"numeric",minute:"2-digit",hour12:!c.h24}).replace(/\s?[ap]m$/i,m=>m.toLowerCase());
@@ -197,23 +253,26 @@ function builder(initial){
   const app=document.getElementById("app");
   app.innerHTML=`<div id="builder"><aside id="panel"></aside><section id="stage"><div id="frame"><div class="hp" id="pv"></div></div>
   <div id="out"><strong>Your homepage link</strong><input id="url" readonly aria-label="Homepage link">
-  <ol><li>Tap <b>Copy link</b>.</li><li>In Brave: <b>Settings → Homepage</b> (turn it on, choose “Enter custom web address”).</li><li>Paste the link and you’re done.</li></ol>
+  <ol><li>Tap <b>Copy link</b>.</li><li>Open your browser’s settings and find <b>Homepage</b> (Chrome, Brave, Edge, Samsung Internet…). Turn it on and paste the link. No such option? Bookmark the link or use <b>Add to Home screen</b>.</li><li>Paste the link and you’re done.</li></ol>
   <div class="hint" id="upnote"></div></div>
   <div id="bar"><button class="btn main" id="gen">Create my link</button><button class="btn" id="reset">Reset</button></div></section></div>`;
   const P=document.getElementById("panel"),pv=document.getElementById("pv");
   const chips=(k,opts)=>`<div class="chips">${Object.entries(opts).map(([v,l])=>`<button class="chip" data-k="${k}" data-v="${v}" aria-pressed="false">${esc(Array.isArray(l)?l[0]:l)}</button>`).join("")}</div>`;
   const rng=(k,l,a,b)=>`<label class="row"><span>${l}<em class="val" data-o="${k}"></em></span><input type="range" data-r="${k}" min="${a}" max="${b}"></label>`;
-  P.innerHTML=`<h1>homepagei</h1><p class="sub">Design your browser homepage, preview it live, and get a link to paste into Brave. No account, no hosting steps.</p>
+  P.innerHTML=`<h1>homepagei</h1><p class="sub">Design your browser homepage, preview it live, and get a link to paste into your browser. Works in Chrome, Firefox, Brave, Edge and more. No account, no hosting steps.</p>
   <div class="sec"><h2>Theme</h2><div class="chips">${Object.entries(THEMES).map(([k,t])=>`<button class="sw" data-k="t" data-v="${k}" aria-pressed="false" aria-label="${t.n}" title="${t.n}" style="background:${t.bg}"></button>`).join("")}</div></div>
-  <div class="sec"><h2>Wallpaper</h2><div class="chips" id="wpm">${[["theme","Theme"],["url","Image link"],["up","Upload"]].map(([v,l])=>`<button class="chip" data-wp="${v}" aria-pressed="false">${l}</button>`).join("")}</div>
+  <div class="sec" id="ccs"><h2>Custom colors</h2>${[["a","Top color"],["b","Bottom color"],["fg","Text"],["ac","Accent"]].map(([k,l])=>`<label class="row">${l}<input type="color" data-cc="${k}"></label>`).join("")}</div>
+  <div class="sec"><h2>Wallpaper</h2><div class="chips" id="wpm">${[["theme","Theme"],["preset","Presets"],["url","Image link"],["up","Upload"]].map(([v,l])=>`<button class="chip" data-wp="${v}" aria-pressed="false">${l}</button>`).join("")}</div>
   <div id="wpx"></div>${rng("dim","Darken",0,70)}${rng("blur","Blur",0,20)}</div>
   <div class="sec"><h2>Font</h2>${chips("f",FONTS)}</div>
   <div class="sec"><h2>Widget style</h2>${chips("cs",CARDS)}${rng("r","Roundness",0,32)}</div>
-  <div class="sec"><h2>Widgets</h2>${Object.entries(WIDGETS).map(([k,l])=>`<label class="row">${l}<input type="checkbox" data-w="${k}"></label>`).join("")}</div>
+  <div class="sec"><h2>Widgets</h2><p class="hint" style="margin:0 0 6px">Tick to show. Use ▲ ▼ to change the order.</p><div id="wl"></div></div>
   <div class="sec"><h2>Your name</h2><input class="field" id="name" maxlength="30" placeholder="Shown in the greeting" autocomplete="off"></div>
   <div class="sec"><h2>Quick links</h2><textarea class="ta" id="links" spellcheck="false" aria-label="Quick links"></textarea><p class="hint" id="lh"></p></div>
   <div class="sec"><h2>Search engine</h2>${chips("eng",ENGINES)}</div>
-  <div class="sec"><h2>Layout</h2>${chips("al",{center:"Centered",left:"Left"})}<label class="row" style="margin-top:12px">24-hour clock<input type="checkbox" id="h24"></label></div>`;
+  <div class="sec"><h2>Layout</h2>${chips("al",{center:"Centered",left:"Left"})}<label class="row" style="margin-top:12px">24-hour clock<input type="checkbox" id="h24"></label>
+  <label class="row">Site icons on links (loaded from DuckDuckGo)<input type="checkbox" id="ic"></label></div>
+  <div class="sec"><h2>Backup</h2><div class="chips"><button class="chip" id="exp">Export settings</button><button class="chip" id="imp">Import settings</button></div><input type="file" id="impf" accept="application/json,.json" hidden><p class="hint">Your uploaded wallpaper isn’t included.</p></div>`;
   const sync=()=>{
     P.querySelectorAll("[data-k]").forEach(b=>b.setAttribute("aria-pressed",String(S[b.dataset.k]===b.dataset.v)));
     P.querySelectorAll("[data-wp]").forEach(b=>b.setAttribute("aria-pressed",String(S.wp.m===b.dataset.wp)));
@@ -221,32 +280,45 @@ function builder(initial){
     P.querySelectorAll("[data-w]").forEach(i=>i.checked=!!S.w[i.dataset.w]);
     P.querySelector("#h24").checked=!!S.h24;
     P.querySelectorAll("[data-o]").forEach(e=>e.textContent=S[e.dataset.o]);
+    P.querySelectorAll("[data-cc]").forEach(i=>i.value=S.cc[i.dataset.cc]);P.querySelector("#ccs").style.display=S.t==="custom"?"":"none";P.querySelector("#ic").checked=!!S.ic;listW();
   };
+  const checkImg=v=>{const st=P.querySelector("#wpst");if(!st)return;v=v.trim();const msg=(t,bad)=>{st.className="hint"+(bad?" err":"");st.textContent=t};
+    if(!v)return msg("Paste a direct link to an image (ending in .jpg, .png or .webp).");
+    const u=safeUrl(v);if(!u||/\s/.test(v))return msg("That doesn’t look like a web address.",1);
+    if(/^http:/i.test(v))return msg("Only https:// links can load here. Try the https:// version of the link.",1);
+    if(/pinterest\.|instagram\.|facebook\.|google\.[a-z.]+\/(imgres|search)|imgur\.com\/(a|gallery)\//i.test(u))return msg("That’s a web page, not the image file. Open the image, press and hold it, and copy the image address.",1);
+    msg("Checking the image…");const im=new Image();im.onload=()=>{if(S.wp.u===u)msg("Image loaded ✓")};im.onerror=()=>{if(S.wp.u===u)msg("Couldn’t load that image. The link may not point straight to an image file, or the website blocks other sites from using its pictures. Try another link or upload the file.",1)};im.src=u};
+  const listW=()=>{P.querySelector("#wl").innerHTML=S.order.map(k=>`<div class="row"><span>${WIDGETS[k]}</span><span class="mv"><button class="mvb" data-mv="${k}:-1" aria-label="Move ${WIDGETS[k]} up">▲</button><button class="mvb" data-mv="${k}:1" aria-label="Move ${WIDGETS[k]} down">▼</button><input type="checkbox" data-w="${k}" aria-label="${WIDGETS[k]}" ${S.w[k]?"checked":""}></span></div>`).join("")};
   const wpx=P.querySelector("#wpx");
   const drawWp=msg=>{
-    if(S.wp.m==="url")wpx.innerHTML=`<input class="field" id="wpu" placeholder="https://…/photo.jpg" value="${esc(S.wp.u)}" aria-label="Image link"><p class="hint">Links work on every device.</p>`;
-    else if(S.wp.m==="up")wpx.innerHTML=`<input class="field" id="wpf" type="file" accept="image/*" aria-label="Upload wallpaper"><p class="hint ${msg?"err":""}">${msg||"Saved in this browser only, so open the homepage in the same browser. Large photos are resized automatically."}</p>`;
+    if(S.wp.m==="url")wpx.innerHTML=`<input class="field" id="wpu" placeholder="https://…/photo.jpg" value="${esc(S.wp.u)}" aria-label="Image link"><p class="hint" id="wpst">Paste a direct link to an image (ending in .jpg, .png or .webp).</p>`;
+    else if(S.wp.m==="up")wpx.innerHTML=`<input class="field" id="wpf" type="file" accept="image/*" aria-label="Upload wallpaper"><p class="hint ${msg&&!/saved/.test(msg)?"err":""}">${msg||"Saved in this browser only, so open the homepage in the same browser. Large photos are resized automatically."}</p>`;
+    else if(S.wp.m==="preset")wpx.innerHTML=`<div class="chips">${PRESETS.map((g,i)=>`<button class="sw" data-p="${i}" style="background:${g}" aria-label="Preset ${i+1}"></button>`).join("")}</div>`;
     else wpx.innerHTML="";
   };
   const hintLinks=()=>{const {ok,bad}=parseLinks(S.links),h=P.querySelector("#lh");h.className="hint"+(bad?" err":"");h.textContent=bad?`${bad} line${bad>1?"s":""} skipped: not a valid web address. Use Name | website.`:`${ok.length} link${ok.length===1?"":"s"}. One per line: Name | website (up to 24).`};
   let raf=0;
-  const draw=()=>{cancelAnimationFrame(raf);raf=requestAnimationFrame(()=>{render(S,pv);hintLinks()});store.set("nook_draft",JSON.stringify(S));document.getElementById("out").classList.remove("show")};
+  const draw=()=>{cancelAnimationFrame(raf);raf=requestAnimationFrame(()=>{const y=(pv.querySelector(".sc")||{}).scrollTop||0;render(S,pv);hintLinks();const n=pv.querySelector(".sc");if(n)n.scrollTop=y});store.set("nook_draft",JSON.stringify(S));document.getElementById("out").classList.remove("show")};
   const restyle=()=>{applyStyle(S,pv);store.set("nook_draft",JSON.stringify(S))};
   P.addEventListener("click",e=>{
     const b=e.target.closest("button");if(!b)return;
     if(b.dataset.k){S[b.dataset.k]=b.dataset.v}
     else if(b.dataset.wp){S.wp.m=b.dataset.wp;drawWp()}
+    else if(b.dataset.p){S.wp.m="preset";S.wp.p=+b.dataset.p}
+    else if(b.dataset.mv){const [k,d]=b.dataset.mv.split(":"),o=S.order,i=o.indexOf(k),j=i+ +d;if(j<0||j>=o.length)return;[o[i],o[j]]=[o[j],o[i]]}
     else return;
     sync();draw();
   });
   P.addEventListener("input",e=>{
     const t=e.target;
     if(t.dataset.r){S[t.dataset.r]=+t.value;const o=P.querySelector(`[data-o="${t.dataset.r}"]`);if(o)o.textContent=t.value;restyle();return}
+    if(t.dataset.cc){S.cc[t.dataset.cc]=t.value;S.t="custom";restyle();sync();return}
     if(t.dataset.w)S.w[t.dataset.w]=t.checked?1:0;
     else if(t.id==="h24")S.h24=t.checked?1:0;
+    else if(t.id==="ic")S.ic=t.checked?1:0;
     else if(t.id==="name")S.name=t.value;
     else if(t.id==="links")S.links=t.value;
-    else if(t.id==="wpu"){S.wp.u=safeUrl(t.value)}
+    else if(t.id==="wpu"){S.wp.u=httpsOnly(t.value);checkImg(t.value)}
     else return;
     draw();
   });
@@ -254,14 +326,18 @@ function builder(initial){
     if(e.target.id!=="wpf")return;const f=e.target.files[0];if(!f)return;
     if(!f.type.startsWith("image/")||f.size>25e6){drawWp("Choose an image under 25 MB (JPG, PNG or WebP).");return}
     try{await idbPut("wp",await shrink(f));wpReset();S.wp.m="up";draw();drawWp("Wallpaper saved. Remember: it only shows in this browser.")}
-    catch{drawWp("Couldn’t read that image. Try a JPG or PNG, or use an image link instead.")}
+    catch{drawWp("Couldn’t save that image. Try a JPG or PNG, or use an image link. Private browsing can also block uploads.")}
   });
+  P.querySelector("#exp").onclick=()=>{const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([JSON.stringify(S,null,1)],{type:"application/json"}));a.download="homepagei-settings.json";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),2000)};
+  P.querySelector("#imp").onclick=()=>P.querySelector("#impf").click();
+  P.querySelector("#impf").onchange=async e=>{const f=e.target.files[0];if(!f||f.size>2e5)return;try{S=clean(JSON.parse(await f.text()));P.querySelector("#name").value=S.name;P.querySelector("#links").value=S.links;sync();drawWp();draw()}catch{alert("That isn’t a valid settings file.")}e.target.value=""};
   document.getElementById("gen").onclick=()=>{
     const base=location.href.split("#")[0].split("?")[0],k=enc(S),link=base+"#c="+k;trust(k);
     const o=document.getElementById("out"),u=document.getElementById("url");u.value=link;o.classList.add("show");
-    document.getElementById("upnote").textContent=S.wp.m==="up"?"Your uploaded wallpaper lives in this browser. To use it in Brave on your phone, open homepagei in Brave there and upload again, or use an image link.":"";
+    document.getElementById("upnote").textContent=S.wp.m==="up"?"Your uploaded wallpaper lives in this browser. To use it in another browser or on another device, open homepagei there and upload again, or use an image link.":"";
     let b=document.getElementById("cp");if(!b){b=document.createElement("button");b.id="cp";b.className="btn main";o.insertBefore(b,u.nextSibling)}
     b.textContent="Copy link";b.onclick=async()=>{try{await navigator.clipboard.writeText(link)}catch{u.select();document.execCommand("copy")}b.textContent="Copied";setTimeout(()=>b.textContent="Copy link",1800)};
+    if(navigator.share){let s=document.getElementById("shr");if(!s){s=document.createElement("button");s.id="shr";s.className="btn";s.textContent="Share link";o.insertBefore(s,u.nextSibling)}s.onclick=()=>navigator.share({url:link}).catch(()=>{})}
     o.scrollIntoView({behavior:"smooth",block:"nearest"});
   };
   document.getElementById("reset").onclick=()=>{S=clean(DEF);P.querySelector("#name").value="";P.querySelector("#links").value=S.links;sync();drawWp();draw()};
@@ -271,13 +347,14 @@ function builder(initial){
 
 /* ========= Router ========= */
 (function(){
+  if(window.top!==window.self){document.body.textContent="Please open this page directly.";return}
   addEventListener("hashchange",()=>location.reload());
   const app=document.getElementById("app"),m=location.hash.match(/^#c=([\w-]+)/),edit=/[?&]edit\b/.test(location.search);
   if(m&&!edit){
     const c=dec(m[1]);
     if(c){document.title="Home";const r=document.createElement("div");r.style.height="100%";app.appendChild(r);const key=m[1];
       const show=hold=>{render(c,r,{editLink:true,hold});if(hold){const b=document.createElement("div");b.className="banner";b.innerHTML="<span>This page came from a link. Check where the shortcuts go before you click.</span><button>Looks good</button>";b.querySelector("button").onclick=()=>{trust(key);show(false)};r.appendChild(b)}};
-      show(!mine().includes(key));return}
+      show(!mine().includes(key));if(c.t==="auto")matchMedia("(prefers-color-scheme: light)").addEventListener("change",()=>location.reload());return}
   }
   let start=m?dec(m[1]):null;
   if(!start){try{start=JSON.parse(store.get("nook_draft"))}catch{}}
